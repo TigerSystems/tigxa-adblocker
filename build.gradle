@@ -2,16 +2,44 @@ plugins {
     id 'java'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'com.gamepowerx'
+archivesBaseName = this.getProject().getName()
+version '1.0.0'
+
+String env = System.getenv("build_number");
+
+if (env != null) {
+    while (env.length() < 6) {
+        env = "0" + env
+    }
+    System.out.println("::set-output name=build_number::" + env)
+}
+
+System.out.println("::set-output name=release::" + getVersion())
+
+String user = findProperty("github.username")
+if(user == null) user = System.getenv("gituser")
+String pwd = findProperty("github.token")
+if(pwd == null) pwd = System.getenv("gitpwd")
 
 repositories {
     mavenCentral()
+    // mavenLocal()
+    maven {
+        name = "Github"
+        url = uri("https://maven.pkg.github.com/TigerSystems/tigxa-api")
+        credentials {
+            username = user
+            password = pwd
+        }
+    }
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    compileOnly('de.MarkusTieger:tigxa-api:1.+')
 }
 
 test {
