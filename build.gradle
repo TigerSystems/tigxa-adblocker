@@ -41,6 +41,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     compileOnly('de.MarkusTieger:tigxa-api:1.2.+')
+    compileOnly('de.MarkusTieger:tigxa-events:1.0.+')
 }
 
 test {
