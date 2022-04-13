@@ -40,8 +40,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
-    compileOnly('de.MarkusTieger:tigxa-api:1.+')
-    compileOnly('de.MarkusTieger:tigxa-events:1.+')
+    implementation('de.MarkusTieger:tigxa-api:[1.0.0,)')
+    implementation('de.MarkusTieger:tigxa-events:[1.0.0,)')
 }
 
 test {
