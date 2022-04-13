@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
     id 'maven-publish'
 }
 
@@ -23,9 +24,14 @@ if(user == null) user = System.getenv("gituser")
 String pwd = findProperty("github.token")
 if(pwd == null) pwd = System.getenv("gitpwd")
 
+application {
+    mainClass = "de.MarkusTieger.dev.Dev"
+}
+
 repositories {
     mavenCentral()
-    // mavenLocal()
+    mavenLocal()
+
     maven {
         name = "Github"
         url = uri("https://maven.pkg.github.com/TigerSystems/tigxa-api")
@@ -39,6 +45,8 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+    implementation('de.MarkusTieger:tigxa-dev:[1.0.0,)')
 
     implementation('de.MarkusTieger:tigxa-api:[1.0.0,)')
     implementation('de.MarkusTieger:tigxa-events:[1.0.0,)')
