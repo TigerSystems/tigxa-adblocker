@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
 }
 
+
 group 'com.gamepowerx'
 archivesBaseName = this.getProject().getName()
 version '1.0.0'
