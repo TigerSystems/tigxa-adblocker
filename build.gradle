@@ -31,11 +31,29 @@ application {
 
 repositories {
     mavenCentral()
-    mavenLocal()
+    // mavenLocal()
 
     maven {
         name = "Github"
         url = uri("https://maven.pkg.github.com/TigerSystems/tigxa-api")
+        credentials {
+            username = user
+            password = pwd
+        }
+    }
+
+    maven {
+        name = "Github"
+        url = uri("https://maven.pkg.github.com/TigerSystems/tigxa-dev")
+        credentials {
+            username = user
+            password = pwd
+        }
+    }
+
+    maven {
+        name = "Github"
+        url = uri("https://maven.pkg.github.com/TigerSystems/tigxa-main")
         credentials {
             username = user
             password = pwd
